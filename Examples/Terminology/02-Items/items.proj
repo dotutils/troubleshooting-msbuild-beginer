@@ -1,0 +1,56 @@
+<Project DefaultTargets="Items-Stringify">
+
+	<ItemGroup>
+		<item1 Include="a">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b1</metadata-b>
+		</item1>
+		<item1 Include="b">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b2</metadata-b>
+		</item1>
+		<item2 Include="x">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b3</metadata-b>
+		</item2>
+		<item2 Include="y">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b4</metadata-b>
+		</item2>
+		<item2 Include="z">
+		</item2>
+		
+		<itemX Include="$(prop1)" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<itemY Include="@(Item2)" />
+	</ItemGroup>
+	
+	<PropertyGroup>
+		<prop1>prop1-default-val</prop1>
+	</PropertyGroup>
+
+	<Target Name="Items-Stringify">
+		<Message Text="Items-Stringify Executing" Importance="High" />
+		<Message Text="item1: @(item1)" Importance="High" />
+		<Message Text="item2: @(item2)" Importance="High" />
+		<Message Text="itemX: @(itemX)" Importance="High" />
+		<Message Text="itemY: @(itemY)" Importance="High" />
+	</Target>
+
+
+	<Target Name="Items-Transform" AfterTargets="Items-Stringify">
+		<Message Text=" " Importance="High" />
+		<Message Text="Items-Transform Executing" Importance="High" />
+		<Message Text="item1: @(item1->'%(metadata-b)')   # item2: @(item2->'%(metadata-b)')" Importance="High" />
+	</Target>
+	
+	<Target Name="Items-Batch" AfterTargets="Items-Transform">
+		<Message Text=" " Importance="High" />
+		<Message Text="Items-Batch Executing" Importance="High" />
+		<Message Text="item1: %(item1.metadata-b)   # item2: %(item2.metadata-b)" Importance="High" />
+	</Target>
+
+
+</Project>

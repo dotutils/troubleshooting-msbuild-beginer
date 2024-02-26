@@ -1,0 +1,50 @@
+<Project DefaultTargets="Target-Props">
+
+    <PropertyGroup>
+	   <prop1>$(prop2)</prop1>
+	   <prop2>123</prop2>
+	   <prop3>$(prop2)</prop3>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+	   <prop4>$(prop2)</prop4>
+	   <prop5>123</prop5>
+	   <prop5>456</prop5>
+	   <prop5 Condition="'$(prop5)' == ''">789</prop5>
+	   <prop6 Condition="'$(prop6)' == ''">prop6-default</prop6>
+	</PropertyGroup>
+	
+
+	<Target Name="Target-Props">
+		<PropertyGroup>
+		   <prop7>value-from-target</prop7>
+		</PropertyGroup>		
+		
+		<Message Text="Target-Props Executing" Importance="High" />
+	   
+		<Message Text="prop1: $(prop1)" Importance="High" />
+		<Message Text="prop2: $(prop2)" Importance="High" />
+		<Message Text="prop3: $(prop3)" Importance="High" />
+		<Message Text="prop4: $(prop4)" Importance="High" />
+		<Message Text="prop5: $(prop5)" Importance="High" />
+		<Message Text="prop6: $(prop6)" Importance="High" />
+		<Message Text="prop7: $(prop7)" Importance="High" />
+		<Message Text="prop8: $(prop8)" Importance="High" />
+	   
+		<PropertyGroup>
+		   <prop5>prop5-redefined-from-target</prop5>
+		</PropertyGroup>
+		
+		<Message Text="prop5: $(prop5)" Importance="High" />
+	</Target>
+	
+	<Target Name="Target-Props2" AfterTargets="Target-Props">
+		<Message Text=" " Importance="High" />
+		<Message Text="Target-Props2 Executing" Importance="High" />
+		
+		<Message Text="prop5: $(prop5)" Importance="High" />
+		<Message Text="prop7: $(prop7)" Importance="High" />
+	</Target>
+
+
+</Project>

@@ -1,0 +1,83 @@
+<Project DefaultTargets="BasicOrder">
+
+	<ItemDefinitionGroup>
+		<item1>
+			<metadata-a>m-a-default</metadata-a>
+			<metadata-b>m-b-default</metadata-b>
+		</item1>
+	</ItemDefinitionGroup>
+	<ItemGroup>
+		<item1 Include="a">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b1</metadata-b>
+		</item1>
+		<item1 Include="b">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b2</metadata-b>
+		</item1>
+		<item2 Include="x">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b3</metadata-b>
+		</item2>
+		<item2 Include="y">
+			<metadata-x>m-inline-x</metadata-x>
+			<metadata-b>m-inline-b4</metadata-b>
+		</item2>
+		<item2 Include="z">
+		</item2>
+		
+		<itemX Include="$(prop2)" />
+	</ItemGroup>
+	<ItemDefinitionGroup>
+		<item2>
+			<metadata-a>m-a2-default</metadata-a>
+			<metadata-b>m-b2-default</metadata-b>
+		</item2>
+	</ItemDefinitionGroup>
+
+    <PropertyGroup>
+	   <prop1>123</prop1>
+	   <prop2>@(item2)</prop2>
+	   <prop3>@(itemY)</prop3>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<itemY Include="$(prop2)" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<itemFoo1 Include="@(Item2)">
+		</itemFoo1>
+		
+		<itemFoo2 Include="%(Item2)">
+		</itemFoo2>
+	</ItemGroup>
+
+	<Target Name="BasicOrder">
+	   <Message Text="Target 'BasicOrder' Executing" Importance="High" />
+	   <Message Text="prop1: $(prop1)" Importance="High" />
+	   <Message Text="prop2: $(prop2)" Importance="High" />
+	   
+	   <Message Text="itemX: @(itemX)" Importance="High" />
+	   <Message Text="prop3: $(prop3)" Importance="High" />
+	</Target>
+	
+	<Target Name="Target-Props--declared-from-item" AfterTargets="BasicOrder">
+	   
+	   <ItemGroup>
+			<item2 Include="H" />
+			<itemY Include="L" />
+		</ItemGroup>
+		
+		<PropertyGroup>
+		   <prop7>value-from-target</prop7>
+		</PropertyGroup>
+	   
+	   <Message Text="Target-Props--declared-from-item Executing" Importance="High" />
+	   
+	   <Message Text="prop2: $(prop2)" Importance="High" />
+	   <Message Text="item2: @(item2)" Importance="High" />
+	   <Message Text="prop3: $(prop3)" Importance="High" />
+	</Target>
+
+</Project>
