@@ -6,11 +6,11 @@
     <RootNamespace>_01_dependencies</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<BuildDependsOn>$(BuildDependsOn);MyCustomTarget</BuildDependsOn>
+    <BuildDependsOn>$(BuildDependsOn);MyCustomTarget</BuildDependsOn>
   </PropertyGroup>
   
   <Target Name="MyCustomTarget">
-	   <Message Text="MyCustomTarget Executing" Importance="High" />
-	</Target>
+       <Message Text="MyCustomTarget Executing" Importance="High" />
+    </Target>
 
 </Project>

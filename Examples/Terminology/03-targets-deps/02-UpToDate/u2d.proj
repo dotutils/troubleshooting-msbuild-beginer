@@ -1,18 +1,18 @@
 <Project DefaultTargets="Target1">
 
-	<Target Name="Target1" Inputs="in.txt" Outputs="out.txt">
-	   <PropertyGroup>
-		<Ticks>$([System.DateTime]::Now.Ticks)</Ticks>
-	   </PropertyGroup>
-	   <Message Text="Target1 executed" Importance="High" />
-	   <WriteLinesToFile
+    <Target Name="Target1" Inputs="in.txt" Outputs="out.txt">
+       <PropertyGroup>
+        <Ticks>$([System.DateTime]::Now.Ticks)</Ticks>
+       </PropertyGroup>
+       <Message Text="Target1 executed" Importance="High" />
+       <WriteLinesToFile
             File="out.txt"
             Lines="$(Ticks)"
             Overwrite="true"/>
-	</Target>
-	
-	<Target Name="Target2" Inputs="out.txt" Outputs="out2.txt" AfterTargets="Target1" >
-	   <Message Text="Target2 executed" Importance="High" />
-	</Target>
+    </Target>
+    
+    <Target Name="Target2" Inputs="out.txt" Outputs="out2.txt" AfterTargets="Target1" >
+       <Message Text="Target2 executed" Importance="High" />
+    </Target>
 
 </Project>

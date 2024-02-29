@@ -11,11 +11,11 @@
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk"/>
   
   <PropertyGroup>
-	<BuildDependsOn>$(BuildDependsOn);MyCustomTarget</BuildDependsOn>
+    <BuildDependsOn>$(BuildDependsOn);MyCustomTarget</BuildDependsOn>
   </PropertyGroup>
   
   <Target Name="MyCustomTarget">
-	   <Message Text="MyCustomTarget Executing" Importance="High" />
+       <Message Text="MyCustomTarget Executing" Importance="High" />
   </Target>
 
 </Project>

@@ -1,43 +1,43 @@
 <Project DefaultTargets="Target1" InitialTargets="Target0" >
 
     <Target Name="Target0">
-	   <Message Text="Target0 executed" Importance="High" />
-	</Target>
+       <Message Text="Target0 executed" Importance="High" />
+    </Target>
 
-	<Target Name="Target1">
-	   <Message Text="Target1 executed" Importance="High" />
-	</Target>
+    <Target Name="Target1">
+       <Message Text="Target1 executed" Importance="High" />
+    </Target>
 
-	<Target Name="Target2">
-	   <Message Text="Target2 executed" Importance="High" />
-	</Target>
-	
-	<!-- BeforeTargets="Target1;Target2" -->
-	<Target Name="Target3">
-	   <Message Text="Target3 executed" Importance="High" />
-	</Target>
-	
-	<!-- AfterTargets="Target1;Target2" -->
-	<!-- FirstHitOnly -->
-	<!-- BeforeTargets="Target0" -->
-	<Target Name="Target4">
-	   <Message Text="Target4 executed" Importance="High" />
-	</Target>
-	
-	<!-- DependsOnTargets="$(Target5DependsOnTargetsProp)" -->
-	<Target Name="Target5">
-	   <Message Text="Target5 executed" Importance="High" />
-	</Target>
-	
-	<ItemGroup>
-	   <Target5DependsOnTargets Include="Target2">
-			</Target5DependsOnTargets>
-			<Target5DependsOnTargets Include="Target3">
-			</Target5DependsOnTargets>
-	</ItemGroup>
+    <Target Name="Target2">
+       <Message Text="Target2 executed" Importance="High" />
+    </Target>
+    
+    <!-- BeforeTargets="Target1;Target2" -->
+    <Target Name="Target3">
+       <Message Text="Target3 executed" Importance="High" />
+    </Target>
+    
+    <!-- AfterTargets="Target1;Target2" -->
+    <!-- FirstHitOnly -->
+    <!-- BeforeTargets="Target0" -->
+    <Target Name="Target4">
+       <Message Text="Target4 executed" Importance="High" />
+    </Target>
+    
+    <!-- DependsOnTargets="$(Target5DependsOnTargetsProp)" -->
+    <Target Name="Target5">
+       <Message Text="Target5 executed" Importance="High" />
+    </Target>
+    
+    <ItemGroup>
+       <Target5DependsOnTargets Include="Target2">
+            </Target5DependsOnTargets>
+            <Target5DependsOnTargets Include="Target3">
+            </Target5DependsOnTargets>
+    </ItemGroup>
 
-	<PropertyGroup>
-	  <Target5DependsOnTargetsProp>Target4;@(Target5DependsOnTargets)</Target5DependsOnTargetsProp>
-	</PropertyGroup>
+    <PropertyGroup>
+      <Target5DependsOnTargetsProp>Target4;@(Target5DependsOnTargets)</Target5DependsOnTargetsProp>
+    </PropertyGroup>
 
 </Project>
