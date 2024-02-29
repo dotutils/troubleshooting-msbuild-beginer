@@ -63,7 +63,6 @@
     </Target>
     
     <Target Name="Target-Props--declared-from-item" AfterTargets="BasicOrder">
-       
        <ItemGroup>
             <item2 Include="H" />
             <itemY Include="L" />

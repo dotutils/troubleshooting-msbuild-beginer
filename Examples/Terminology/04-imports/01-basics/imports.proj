@@ -1,5 +1,5 @@
 <!-- Sdk="Microsoft.NET.Sdk" -->
-<Project DefaultTargets="Target2" Sdk="Microsoft.NET.Sdk" >
+<Project DefaultTargets="Target2" >
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
