@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net472</TargetFrameworks>
+    <RootNamespace>console_multi_target</RootNamespace>
+  </PropertyGroup>
+
+</Project>
